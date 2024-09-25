@@ -84,6 +84,7 @@ class MyContacts extends StatelessWidget {
                       url: socialMedia.values.elementAt(index),
                     );
                   }
+                  return null;
                 },
               ),
             ],
