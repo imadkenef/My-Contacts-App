@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_contacts/widgets/social_media_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'widgets/Contact_Grid.dart';
+
 class MyContacts extends StatelessWidget {
   MyContacts({super.key});
 
@@ -56,7 +58,6 @@ class MyContacts extends StatelessWidget {
                         Icons.phone,
                         size: 30,
                         color: Colors.grey,
-                        
                       ),
                     ),
                     const Text(
@@ -70,23 +71,7 @@ class MyContacts extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              GridView.builder(
-                padding: const EdgeInsets.all(20),
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: socialMedia.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3),
-                itemBuilder: (context, index) {
-                  if (index < socialMedia.length) {
-                    return SocialMediaIcon(
-                      iconAssets: socialMedia.keys.elementAt(index),
-                      url: socialMedia.values.elementAt(index),
-                    );
-                  }
-                  return null;
-                },
-              ),
+              ConatctsGrid(socialMedia: socialMedia),
             ],
           ),
         ),
