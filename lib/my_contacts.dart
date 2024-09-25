@@ -56,6 +56,7 @@ class MyContacts extends StatelessWidget {
                         Icons.phone,
                         size: 30,
                         color: Colors.grey,
+                        
                       ),
                     ),
                     const Text(
