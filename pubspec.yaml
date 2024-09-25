@@ -37,6 +37,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   url_launcher: ^6.3.0
   flutter_launcher_icons: ^0.14.1
+  flutter_native_splash: ^2.4.1
+
+flutter_native_splash:
+  color: "#03071e"
+  image: assets\image.png
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +57,7 @@ flutter_launcher_icons:
   image_path: "assets/image.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
   
+
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
