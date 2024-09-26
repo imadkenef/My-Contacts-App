@@ -18,12 +18,9 @@ class _SocialMediaIconState extends State<SocialMediaIcon> {
       padding: const EdgeInsets.all(12),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => StartSocialMedia(
-                        url: widget.url,
-                      )));
+          showModalBottomSheet(
+              context: context,
+              builder: (context) => StartSocialMedia(url: widget.url));
         },
         child: CircleAvatar(
           backgroundColor: Colors.transparent,

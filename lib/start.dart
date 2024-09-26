@@ -9,13 +9,10 @@ class StartSocialMedia extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 3, 7, 30),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+              launchUrl(Uri.parse(url ), mode: LaunchMode.externalApplication);
             },
             style: ButtonStyle(
               backgroundColor: WidgetStatePropertyAll(Colors.deepOrange),
