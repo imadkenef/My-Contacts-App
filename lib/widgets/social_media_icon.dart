@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+import '../start.dart';
 
 class SocialMediaIcon extends StatefulWidget {
   String iconAssets;
@@ -17,8 +18,12 @@ class _SocialMediaIconState extends State<SocialMediaIcon> {
       padding: const EdgeInsets.all(12),
       child: InkWell(
         onTap: () {
-          launchUrl(Uri.parse(widget.url),
-              mode: LaunchMode.externalApplication);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => StartSocialMedia(
+                        url: widget.url,
+                      )));
         },
         child: CircleAvatar(
           backgroundColor: Colors.transparent,
