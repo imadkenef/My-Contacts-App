@@ -16,6 +16,28 @@ class MyContacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text(
+          "My Contacts Screen",
+          style: TextStyle(color: Colors.white),
+        ),
+        leading: GestureDetector(
+          onTap: () {},
+          child: Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(icon: Icon(Icons.search,color: Colors.white,),onPressed: (){
+
+            },),
+          )
+        ],
+      ),
       backgroundColor: const Color.fromARGB(255, 3, 7, 30),
       body: SizedBox(
         width: double.infinity,
@@ -56,7 +78,6 @@ class MyContacts extends StatelessWidget {
                         Icons.phone,
                         size: 30,
                         color: Colors.grey,
-                        
                       ),
                     ),
                     const Text(
