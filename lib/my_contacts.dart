@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:my_contacts/widgets/social_media_icon.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MyContacts extends StatelessWidget {
+import 'my_variable.dart';
+import 'widgets/social_media_icon.dart';
+
+class MyContacts extends StatefulWidget {
   MyContacts({super.key});
 
-  Map<String, String> socialMedia = {
-    'facebook.png': 'https://www.facebook.com',
-    'instagram.png': 'https://instagram.com',
-    'linkedin.png': 'https://linkedin.com',
-    'tiktok.png': 'https://tiktok.com',
-    'twitter.png': 'https://x.com',
-    'youtube.png': 'https://youtube.com',
+  @override
+  State<MyContacts> createState() => _MyContactsState();
+}
+
+class _MyContactsState extends State<MyContacts> {
+  void changeStete(){
+    setState(() {
+      
+    });
+  }
+  //String? myPlatform;
+  //Uri? myUrl;
+  Map<String, Uri> socialMedia = {
+    'facebook.png': Uri.parse('https://www.facebook.com'),
+    'instagram.png': Uri.parse('https://instagram.com'),
+    'linkedin.png': Uri.parse('https://linkedin.com'),
+    'tiktok.png': Uri.parse('https://tiktok.com'),
+    'twitter.png': Uri.parse('https://x.com'),
+    'youtube.png': Uri.parse('https://youtube.com'),
   };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,19 +37,24 @@ class MyContacts extends StatelessWidget {
           "My Contacts Screen",
           style: TextStyle(color: Colors.white),
         ),
-        leading: GestureDetector(
-          onTap: () {},
-          child: Icon(
-            Icons.home,
-            color: Colors.white,
-          ),
-        ),
+        leading: GestureDetector(onTap: () {}, child: Icon(Icons.home)),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: IconButton(icon: Icon(Icons.search,color: Colors.white,),onPressed: (){
-
-            },),
+            child: IconButton(
+              onPressed: () {
+                myUrl == null
+                    ? launchUrl(Uri.parse("tel: +21379535738"))
+                    : launchUrl(myUrl!, mode: LaunchMode.externalApplication);
+              },
+              icon: myPlatform == null
+                  ? Icon(Icons.phone)
+                  : Material(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(50),
+                      elevation: 4,
+                      child: Image(image: AssetImage("assets/$myPlatform"))),
+            ),
           )
         ],
       ),
@@ -71,15 +91,10 @@ class MyContacts extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        launchUrl(Uri.parse("tel: +21379535738"));
-                      },
-                      icon: const Icon(
-                        Icons.phone,
-                        size: 30,
-                        color: Colors.grey,
-                      ),
-                    ),
+                        onPressed: () {
+                          launchUrl(Uri.parse("tel: +21379535738"));
+                        },
+                        icon: Icon(Icons.phone)),
                     const Text(
                       "+213 795357938",
                       style: TextStyle(
@@ -101,9 +116,9 @@ class MyContacts extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index < socialMedia.length) {
                     return SocialMediaIcon(
-                      iconAssets: socialMedia.keys.elementAt(index),
-                      url: socialMedia.values.elementAt(index),
-                    );
+                        platform: socialMedia.keys.toList()[index],
+                        url: socialMedia.values.toList()[index],
+                        changeState: changeStete);
                   }
                   return null;
                 },
